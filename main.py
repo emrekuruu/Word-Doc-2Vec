@@ -20,19 +20,19 @@ ingredients = [
 ]
 
 recipes = {
-    "Chocolate Cake": ["flour", "sugar", "cocoa powder", "eggs", "butter"],
-    "Apple Pie": ["apples", "sugar", "flour", "butter", "cinnamon"],
-    "Grilled Salmon": ["salmon", "olive oil", "lemon", "garlic", "dill"],
-    "Fish Tacos": ["cod", "tortillas", "cabbage", "lime", "avocado"],
-    "Shrimp Scampi": ["shrimp", "linguine", "butter", "garlic", "lemon"],
-    "Vegetable Stir-Fry": ["bell peppers", "broccoli", "carrots", "snap peas", "onion"],
-    "Roasted Vegetables": ["potatoes", "carrots", "zucchini", "bell peppers", "onion"],
-    "Vegetable Curry": ["potatoes", "cauliflower", "carrots", "bell peppers", "onion"]
+    "Chocolate Cake": process_text(["flour", "sugar", "cocoa powder", "eggs", "butter"]),
+    "Apple Pie": process_text(["apples", "sugar", "flour", "butter", "cinnamon"]),
+    "Caesar Salad": process_text(["lettuce", "parmesan cheese", "croutons", "lemon", "olive oil"]),
+    "Greek Salad": process_text(["cucumbers", "tomatoes", "feta cheese", "olive oil", "oregano"]),
+    "Caprese Salad": process_text(["tomatoes", "mozzarella", "basil leaves", "balsamic vinegar", "olive oil"]),
+    "Fish Tacos": process_text(["cod", "tortillas", "cabbage", "lime", "avocado"]),
+    "Shrimp Scampi": process_text(["shrimp", "linguine", "butter", "garlic", "lemon"]),
+    "Vegetable Stir-Fry": process_text(["bell peppers", "broccoli", "carrots", "snap peas", "onion"]),
+    "Roasted Vegetables": process_text(["potatoes", "carrots", "zucchini", "bell peppers", "onion"]),
+    "Vegetable Curry": process_text(["potatoes", "cauliflower", "carrots", "bell peppers", "onion"])
 }
 
 ingredients = process_text(ingredients)
-
-print(ingredients)
 
 word2vec = get_model("Word2Vec")
 

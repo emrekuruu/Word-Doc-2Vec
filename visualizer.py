@@ -62,7 +62,7 @@ def visualize_embeddings_recipes(recipes, model, type):
     pca_result = pca.fit_transform(embeddings)
 
     # Clustering using KMeans
-    n_clusters = 3
+    n_clusters = 4
     kmeans = KMeans(n_clusters=n_clusters)
     kmeans.fit(pca_result)
     clusters = kmeans.labels_
