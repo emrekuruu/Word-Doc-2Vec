@@ -11,7 +11,16 @@ def get_embedding(model, word):
     except:
         return None
 
-def visualize_embeddings(ingredients, model, type):
+
+def embed_recipe(model, recipe):
+    embeddings = [get_embedding(model, word) for word in recipe if get_embedding(model, word) is not None]
+    if embeddings:
+        return np.mean(embeddings, axis=0)
+    else:
+        return None
+
+
+def visualize_embeddings_ingridients(ingredients, model, type):
     # Embed the ingredients
     embeddings = np.array([get_embedding(model, word) for word in ingredients if get_embedding(model, word) is not None])
     valid_ingredients = [word for word in ingredients if get_embedding(model, word) is not None]
@@ -41,3 +50,35 @@ def visualize_embeddings(ingredients, model, type):
     plt.title(f'Most Similar Words in the {type} Vocabulary')
     plt.colorbar(scatter, ax=ax, orientation='vertical', pad=0.01, aspect=40)
     plt.savefig(f"figures/{type}.png")
+
+
+def visualize_embeddings_recipes(recipes, model, type):
+    # Embed the ingredients
+    embeddings = np.array([embed_recipe(model, recipe) for recipe in recipes.values() if embed_recipe(model, recipe) is not None])
+    names = [name for name in recipes.keys() if embed_recipe(model, recipes[name]) is not None]
+
+    # Perform PCA to reduce dimensions for visualization
+    pca = PCA(n_components=2)
+    pca_result = pca.fit_transform(embeddings)
+
+    # Clustering using KMeans
+    n_clusters = 3
+    kmeans = KMeans(n_clusters=n_clusters)
+    kmeans.fit(pca_result)
+    clusters = kmeans.labels_
+    centroids = kmeans.cluster_centers_
+
+    # Voronoi diagram using the centroids
+    vor = Voronoi(centroids)
+    fig, ax = plt.subplots(figsize=(14, 10))
+    voronoi_plot_2d(vor, ax=ax, show_vertices=False, line_colors='green', line_width=2, line_alpha=0.6)
+
+    scatter = ax.scatter(pca_result[:, 0], pca_result[:, 1], c=clusters, cmap='viridis', s=100)
+
+    # Adding labels to the points
+    for i, word in enumerate(names):
+        ax.annotate(word, (pca_result[i, 0], pca_result[i, 1]), fontsize=12, ha='right')
+
+    plt.title(f'Most Similar Recipes in the {type} Vocabulary')
+    plt.colorbar(scatter, ax=ax, orientation='vertical', pad=0.01, aspect=40)
+    plt.savefig(f"figures/Recipe-{type}.png")
