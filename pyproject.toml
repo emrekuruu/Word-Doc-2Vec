@@ -1,0 +1,28 @@
+[tool.poetry]
+name = "Word2Vec"
+version = "0.1.0"
+description = "This is a project for CS-449 / Natural Language Processing"
+authors = ["Emre Kuru <emre.kuru@ozu.edu.tr>"]
+license = "MIT"
+readme = "README.md"
+
+[tool.poetry.dependencies]
+python = "^3.11.0, <3.12"
+gensim = "^4.3.2"
+pandas = "^2.2.2"
+ipykernel = "^6.29.4"
+scipy = "1.10.1"
+matplotlib = "^3.9.0"
+scikit-learn = "^1.5.0"
+
+
+[tool.poetry.dev-dependencies]
+# Add your development dependencies here
+
+
+[tool.poetry.group.dev.dependencies]
+poethepoet = "^0.26.1"
+
+[build-system]
+requires = ["poetry-core>=1.0.0"]
+build-backend = "poetry.core.masonry.api"
