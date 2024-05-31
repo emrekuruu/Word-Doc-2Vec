@@ -30,6 +30,8 @@ All the resultant figures will be saved in the `figures` folder. The models are 
 
 ## Project Structure
 
+├── data/ # Folder containing the used corpus. Please dont forget to **UNZIP**!
+
 ├── models/ # Folder containing the pickled models
 
 ├── figures/ # Folder containing the generated figures 
