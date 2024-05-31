@@ -31,10 +31,17 @@ All the resultant figures will be saved in the `figures` folder. The models are 
 ## Project Structure
 
 ├── models/ # Folder containing the pickled models
+
 ├── figures/ # Folder containing the generated figures 
+
 ├── main.py # Main script to run the project
+
 ├── embedders.py # Script for loading and managing word embedding models
+
 ├── data_processer.py # Script for processing data
+
 ├── visualizer.py # Script for visualization
+
 ├── README.md # This README file
+
 ├── pyproject.toml # Poetry configuration file
